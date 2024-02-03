@@ -2,7 +2,7 @@ import Editor from "@monaco-editor/react";
 import { useState } from "react";
 
 // TODO: check default value!
-export const CodeEditor = ({ defaultCode }) => {
+export const CodeEditor = ({ defaultCode, readOnly }) => {
   const [code, setCode] = useState(defaultCode);
 
   function handleOnChange(value) {
@@ -14,10 +14,10 @@ export const CodeEditor = ({ defaultCode }) => {
       <Editor
         style={{ height: "300px" }}
         defaultLanguage="javascript"
-        defaultValue={code}
+        value={code}
         theme="vs-dark"
         options={{
-          domReadOnly: true,
+          readOnly,
           fontSize: 14,
           minimap: {
             enabled: false,
