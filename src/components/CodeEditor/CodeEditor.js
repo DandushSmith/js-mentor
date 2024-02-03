@@ -1,6 +1,7 @@
 import Editor from "@monaco-editor/react";
 
 export const CodeEditor = ({ code, readOnly, handleEdit }) => {
+  //TODO: add syle.scss!
   return (
     <div style={{ border: "1px solid red", height: "300px" }}>
       <Editor

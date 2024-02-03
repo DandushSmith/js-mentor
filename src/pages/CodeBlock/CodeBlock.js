@@ -10,12 +10,14 @@ import { useDebouncedCallback } from "use-debounce";
 const CodeBlock = () => {
   const [isReadOnly, setIsReadOnly] = useState(true);
   const { index } = useParams();
+
   const dispatch = useDispatch();
   const codeBlocks = useSelector((state) => state.codeBlocks);
-  const data = codeBlocks[index];
 
-  const debounce = useDebouncedCallback((updatedValue) => {
-    socket.emit("edit", data?.title, updatedValue, index);
+  const codeBlock = codeBlocks[index];
+
+  const debounceEdit = useDebouncedCallback((updatedValue) => {
+    socket.emit("edit", codeBlock?.title, updatedValue, index);
     dispatch(editCodeBlock({ index, code: updatedValue }));
   }, 500);
 
@@ -36,19 +38,18 @@ const CodeBlock = () => {
     };
   }, [index]);
 
-  if (!data) {
-    // TODO: what to do here??
+  if (!codeBlock) {
     return null;
   }
 
   return (
     <div className="CodeBlockContainer">
-      <h2>{data.title}</h2>
+      <h2>{codeBlock.title}</h2>
       <div className="codeContainer">
         <CodeEditor
-          code={data?.code}
+          code={codeBlock.code}
           readOnly={isReadOnly}
-          handleEdit={debounce}
+          handleEdit={debounceEdit}
         />
       </div>
     </div>
