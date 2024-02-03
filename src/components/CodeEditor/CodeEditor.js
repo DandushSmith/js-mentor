@@ -1,12 +1,6 @@
 import Editor from "@monaco-editor/react";
 
 export const CodeEditor = ({ code, readOnly, handleEdit }) => {
-  function handleOnChange(value) {
-    if (value !== code) {
-      handleEdit(value);
-    }
-  }
-
   return (
     <div style={{ border: "1px solid red", height: "300px" }}>
       <Editor
@@ -22,7 +16,7 @@ export const CodeEditor = ({ code, readOnly, handleEdit }) => {
           },
           contextmenu: false,
         }}
-        onChange={handleOnChange}
+        onChange={handleEdit}
       />
     </div>
   );

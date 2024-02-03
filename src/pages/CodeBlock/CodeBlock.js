@@ -5,6 +5,7 @@ import { socket } from "../../socket";
 import { editCodeBlock } from "../../redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { CodeEditor } from "../../components/CodeEditor/CodeEditor";
+import { useDebouncedCallback } from "use-debounce";
 
 const CodeBlock = () => {
   const [isReadOnly, setIsReadOnly] = useState(true);
@@ -13,6 +14,11 @@ const CodeBlock = () => {
   const codeBlocks = useSelector((state) => state.codeBlocks);
   const data = codeBlocks[index];
 
+  const debounce = useDebouncedCallback((updatedValue) => {
+    socket.emit("edit", data?.title, updatedValue, index);
+    dispatch(editCodeBlock({ index, code: updatedValue }));
+  }, 500);
+
   socket.on("not_first_user", () => {
     setIsReadOnly(false);
   });
@@ -20,11 +26,6 @@ const CodeBlock = () => {
   socket.on("edited", (updatedCode) => {
     dispatch(editCodeBlock({ index, code: updatedCode }));
   });
-
-  const handleEdit = (updatedValue) => {
-    dispatch(editCodeBlock({ index, code: updatedValue }));
-    socket.emit("edit", data.title, updatedValue, index);
-  };
 
   useEffect(() => {
     socket.connect();
@@ -47,7 +48,7 @@ const CodeBlock = () => {
         <CodeEditor
           code={data?.code}
           readOnly={isReadOnly}
-          handleEdit={handleEdit}
+          handleEdit={debounce}
         />
       </div>
     </div>

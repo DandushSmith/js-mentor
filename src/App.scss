@@ -1,6 +1,6 @@
-$background-color: #012E40;
+$background-color: #012e40;
 $codeblock-color: #011627;
-$title-color: #F2DD72;
+$title-color: #f2dd72;
 $title-shadow1: 0 0 10px;
 $title-shadow2: 0 0 20px;
 $title-shadow3: 0 0 30px;
@@ -12,4 +12,18 @@ $border: 0.5px solid $title-color;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Code Pro", monospace;
+  font-family: "Ubuntu", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #012e40;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
