@@ -1,0 +1,30 @@
+@use "../../App";
+
+.container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto;
+
+  .codeBlocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  h1 {
+    color: App.$title-color;
+    animation: glow 4s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      text-shadow: App.$title-shadow1 App.$title-color;
+    }
+    50% {
+      text-shadow: App.$title-shadow2 App.$title-color,
+        App.$title-shadow3 App.$title-color;
+    }
+  }
+}

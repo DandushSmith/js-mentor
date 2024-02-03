@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.scss";
+import Lobby from "./pages/Lobby/Lobby";
+import CodeBlock from "./pages/CodeBlock/CodeBlock";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setCodeBlocks } from "./redux/reducers";
+import axios from "axios";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/codeBlock`
+        );
+        dispatch(setCodeBlocks(res.data));
+      } catch (error) {
+        // TODO: remove console.error and handle error, maybe using error boundries
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Lobby />} />
+        <Route path="/codeBlock/:index" element={<CodeBlock />} />
+      </Routes>
+    </Router>
   );
 }
 

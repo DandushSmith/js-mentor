@@ -1,0 +1,25 @@
+
+@use '../../App';
+
+.code-block-card {
+    width:10rem;
+    background-color: App.$codeblock-color;
+    border: App.$border;
+    border-radius: 8px;
+    box-shadow: App.$card-shadow;
+    padding: 16px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    
+    &:hover {
+      cursor: pointer;  
+      transform: scale(1.05);
+    }
+  }
+  
+  .code-block-title {
+    font-size: 18px;
+    color: App.$title-color;
+    text-shadow: App.$title-shadow1 App.$title-color;
+  }
