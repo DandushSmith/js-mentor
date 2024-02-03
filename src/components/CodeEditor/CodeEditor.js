@@ -1,12 +1,10 @@
 import Editor from "@monaco-editor/react";
-import { useState } from "react";
 
-// TODO: check default value!
-export const CodeEditor = ({ defaultCode, readOnly }) => {
-  const [code, setCode] = useState(defaultCode);
-
+export const CodeEditor = ({ code, readOnly, handleEdit }) => {
   function handleOnChange(value) {
-    setCode(value || "");
+    if (value !== code) {
+      handleEdit(value);
+    }
   }
 
   return (

@@ -13,22 +13,17 @@ const CodeBlock = () => {
   const codeBlocks = useSelector((state) => state.codeBlocks);
   const data = codeBlocks[index];
 
-  socket.on("connect", () => {
-    console.log(`Connected with ${socket.id}`);
-  });
-
   socket.on("not_first_user", () => {
     setIsReadOnly(false);
   });
 
   socket.on("edited", (updatedCode) => {
-    console.log("edited");
     dispatch(editCodeBlock({ index, code: updatedCode }));
   });
 
-  const handleEdit = (e) => {
-    socket.emit("edit", data.title, e.target.value, index);
-    dispatch(editCodeBlock({ index, code: e.target.value }));
+  const handleEdit = (updatedValue) => {
+    dispatch(editCodeBlock({ index, code: updatedValue }));
+    socket.emit("edit", data.title, updatedValue, index);
   };
 
   useEffect(() => {
@@ -38,8 +33,7 @@ const CodeBlock = () => {
     return () => {
       socket.disconnect();
     };
-  }, [index, data]);
-  console.log(data);
+  }, [index]);
 
   if (!data) {
     // TODO: what to do here??
@@ -50,7 +44,11 @@ const CodeBlock = () => {
     <div className="CodeBlockContainer">
       <h2>{data.title}</h2>
       <div className="codeContainer">
-        <CodeEditor defaultCode={data?.code} readOnly={isReadOnly} />
+        <CodeEditor
+          code={data?.code}
+          readOnly={isReadOnly}
+          handleEdit={handleEdit}
+        />
       </div>
     </div>
   );
