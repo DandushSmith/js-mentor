@@ -17,10 +17,7 @@ function App() {
           `${process.env.REACT_APP_SERVER_URL}/codeBlock`
         );
         dispatch(setCodeBlocks(res.data));
-      } catch (error) {
-        // TODO: remove console.error and handle error, maybe using error boundries
-        console.error(error);
-      }
+      } catch (e) {}
     };
 
     fetchData();

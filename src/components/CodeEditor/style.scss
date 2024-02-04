@@ -1,0 +1,7 @@
+@use "../../App";
+
+.editorContainer {
+  height: 400px;
+  border: App.$border;
+  box-shadow: App.$card-shadow2;
+}

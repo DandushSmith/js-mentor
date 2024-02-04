@@ -1,11 +1,11 @@
 import Editor from "@monaco-editor/react";
+import "./style.scss";
 
 export const CodeEditor = ({ code, readOnly, handleEdit }) => {
-  //TODO: add syle.scss!
   return (
-    <div style={{ border: "1px solid red", height: "300px" }}>
+    <div className="editorContainer">
       <Editor
-        style={{ height: "300px" }}
+        className="editor"
         defaultLanguage="javascript"
         value={code}
         theme="vs-dark"
