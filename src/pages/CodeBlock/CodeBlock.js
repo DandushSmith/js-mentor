@@ -9,6 +9,7 @@ import { useDebouncedCallback } from "use-debounce";
 
 const CodeBlock = () => {
   const [isReadOnly, setIsReadOnly] = useState(true);
+  const [isShowSmiley, setIsShowSmiley] = useState(false);
   const { index } = useParams();
 
   const dispatch = useDispatch();
@@ -16,8 +17,25 @@ const CodeBlock = () => {
 
   const codeBlock = codeBlocks[index];
 
+  const isCodeMatchingSolution = (updatedValue) => {
+    const codeLines = updatedValue.split("\n");
+    const lastLine = codeLines[codeLines.length - 1].trim();
+    const solution = codeBlock.solution.trim();
+    return lastLine === solution;
+  };
+
+  const showSmiley = () => {
+    setIsShowSmiley(true);
+    setTimeout(() => {
+      setIsShowSmiley(false);
+    }, 5000);
+  };
+
   const debounceEdit = useDebouncedCallback((updatedValue) => {
     socket.emit("edit", codeBlock?.title, updatedValue, index);
+    if (isCodeMatchingSolution(updatedValue)) {
+      showSmiley();
+    }
     dispatch(editCodeBlock({ index, code: updatedValue }));
   }, 500);
 
@@ -52,6 +70,7 @@ const CodeBlock = () => {
           handleEdit={debounceEdit}
         />
       </div>
+      {isShowSmiley && <div className="smiley">😃</div>}
     </div>
   );
 };

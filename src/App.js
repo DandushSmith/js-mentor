@@ -12,12 +12,10 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/codeBlock`
-        );
-        dispatch(setCodeBlocks(res.data));
-      } catch (e) {}
+      const res = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/codeBlock`
+      );
+      dispatch(setCodeBlocks(res.data));
     };
 
     fetchData();
