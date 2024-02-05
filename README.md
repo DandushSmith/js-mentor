@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# JS Mentor - Real-time Coding Mentorship Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Overview
 
-## Available Scripts
+JS Mentor is a web application designed to facilitate real-time coding mentorship sessions. The platform allows mentors to share code with mentees, observe real-time changes, and interact collaboratively. The frontend and backend are hosted separately.
 
-In the project directory, you can run:
+# Project URLs
 
-### `npm start`
+Frontend URL: [JS Mentor Client](https://client-psi-pearl.vercel.app/)
+Backend URL: [JS Mentor Server](https://js-mentor-back.onrender.com/)
+Repositories
+Frontend GitHub Repository: [JS Mentor Client Repository](https://github.com/DandushSmith/js-mentor-client)
+Backend GitHub Repository: [JS Mentor Server Repository](https://github.com/DandushSmith/js-mentor-server)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend: React
+Backend: Node.js, Express.js
+Database: MongoDB (with Mongoose)
 
-### `npm test`
+# Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the frontend repository:
+git clone https://github.com/DandushSmith/js-mentor-client.git
+cd js-mentor-client
 
-### `npm run build`
+Install dependencies and start the frontend application:
+npm install
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the backend repository:
+git clone https://github.com/DandushSmith/js-mentor-server.git
+cd js-mentor-server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install dependencies and start the backend server:
+npm install
+npm start
+Usage
+Visit the JS Mentor Client to access the frontend.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Mentors and students can collaborate on coding in real-time using the provided features.
+Have fun!
